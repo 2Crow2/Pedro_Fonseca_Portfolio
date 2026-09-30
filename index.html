@@ -319,6 +319,7 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
 .proj-videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.2rem;max-width:900px;margin:0 auto 2rem;}
 .proj-video-wrap{border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:var(--bg2);}
 .proj-video-wrap video{width:100%;display:block;max-height:280px;background:#000;}
+.proj-video-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#000;}
 .proj-video-label{padding:.7rem 1rem;font-size:.78rem;color:var(--grey);}
 .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:4rem;text-align:center;color:var(--grey);grid-column:1/-1;}
 .empty-state .eicon{font-size:2.5rem;opacity:.25;}
@@ -777,7 +778,7 @@ const CATEGORIES = {
         ],
         videos:[]
       },
-      { thumb:'kbox_family_front.png', name:'K-Box — Electro-Voice', nameEn:'K-Box — Electro-Voice',
+      { thumb:'es31x_combo_front_direct_transparent.png', name:'K-Box — Electro-Voice', nameEn:'K-Box — Electro-Voice',
         desc:'Renders de produto para a série K-Box (ES31X) da Electro-Voice — família completa em três tamanhos (10", 12" e 15"), mais a coluna ES315. Composições em grupo e individuais, com foco em texturas de grelha, materiais e acabamento profissional para catálogo.',
         descEn:'Product renders for the Electro-Voice K-Box (ES31X) series — full family across three sizes (10", 12" and 15"), plus the ES315 speaker. Group and individual compositions, focused on grille texture, materials and catalog-ready finish.',
         tags:['KeyShot','Produto','Electro-Voice','Keenfinity'], year:'2025', client:'Keenfinity — Electro-Voice',
@@ -786,12 +787,10 @@ const CATEGORIES = {
           { src:'kbox_family_front.png', label:'Família ES31X (10"/12"/15") — Frontal' },
           { src:'kbox_family_left.png',  label:'Família ES31X (10"/12"/15") — Perspetiva esquerda' },
           { src:'kbox_family_right.png', label:'Família ES31X (10"/12"/15") — Perspetiva direita' },
-          { src:'es31x_combo_front_direct_white.jpg', label:'Família ES31X — Combo frontal direta (fundo branco)' },
-          { src:'es31x_combo_front_direct_bg.jpg',    label:'Família ES31X — Combo frontal direta (com fundo)' },
-          { src:'es31x_combo_front_left_white.jpg',   label:'Família ES31X — Combo perspetiva esquerda (fundo branco)' },
-          { src:'es31x_combo_front_left_bg.jpg',      label:'Família ES31X — Combo perspetiva esquerda (com fundo)' },
-          { src:'es31x_combo_front_right_white.jpg',  label:'Família ES31X — Combo perspetiva direita (fundo branco)' },
-          { src:'es31x_combo_front_right_bg.jpg',     label:'Família ES31X — Combo perspetiva direita (com fundo)' },
+          { src:'es31x_combo_front_direct_transparent.png', label:'Família ES31X — Combo frontal direta (sem fundo)' },
+          { src:'es31x_combo_front_direct_bg.png',    label:'Família ES31X — Combo frontal direta (com fundo)' },
+          { src:'es31x_combo_front_left_bg.png',      label:'Família ES31X — Combo perspetiva esquerda (com fundo)' },
+          { src:'es31x_combo_front_right_bg.png',     label:'Família ES31X — Combo perspetiva direita (com fundo)' },
           { src:'es310_front_direct_white.png',        label:'ES310 (10") — Vista frontal direta' },
           { src:'es310_front_horizontal_evleft_white.png',  label:'ES310 (10") — Frontal horizontal (EV esquerda)' },
           { src:'es310_front_horizontal_evright_white.png', label:'ES310 (10") — Frontal horizontal (EV direita)' },
@@ -816,30 +815,18 @@ const CATEGORIES = {
           { src:'es312_back_direct_white.png',              label:'ES312 (12") — Vista traseira direta' },
           { src:'es312_back_left_white.png',                label:'ES312 (12") — Perspetiva traseira esquerda' },
           { src:'es312_back_right_white.png',               label:'ES312 (12") — Perspetiva traseira direita' },
-          { src:'es315_front_direct_white.jpg', label:'ES315 (15") — Vista frontal direta (fundo branco)' },
-          { src:'es315_front_direct_bg.jpg', label:'ES315 (15") — Vista frontal direta (com fundo)' },
-          { src:'es315_front_horizontal_evleft_white.jpg', label:'ES315 (15") — Frontal horizontal (EV esquerda) (fundo branco)' },
-          { src:'es315_front_horizontal_evleft_bg.jpg', label:'ES315 (15") — Frontal horizontal (EV esquerda) (com fundo)' },
-          { src:'es315_front_horizontal_evright_white.jpg', label:'ES315 (15") — Frontal horizontal (EV direita) (fundo branco)' },
-          { src:'es315_front_horizontal_evright_bg.jpg', label:'ES315 (15") — Frontal horizontal (EV direita) (com fundo)' },
-          { src:'es315_front_left_angle_white.jpg', label:'ES315 (15") — Perspetiva frontal esquerda (fundo branco)' },
-          { src:'es315_front_left_angle_bg.jpg', label:'ES315 (15") — Perspetiva frontal esquerda (com fundo)' },
-          { src:'es315_front_right_angle_white.jpg', label:'ES315 (15") — Perspetiva frontal direita (fundo branco)' },
-          { src:'es315_front_right_angle_bg.jpg', label:'ES315 (15") — Perspetiva frontal direita (com fundo)' },
-          { src:'es315_horizontal_left_evleft_white.jpg', label:'ES315 (15") — Horizontal esquerda (EV esquerda) (fundo branco)' },
-          { src:'es315_horizontal_left_evleft_bg.jpg', label:'ES315 (15") — Horizontal esquerda (EV esquerda) (com fundo)' },
-          { src:'es315_horizontal_left_evright_white.jpg', label:'ES315 (15") — Horizontal esquerda (EV direita) (fundo branco)' },
-          { src:'es315_horizontal_left_evright_bg.jpg', label:'ES315 (15") — Horizontal esquerda (EV direita) (com fundo)' },
-          { src:'es315_horizontal_right_evleft_white.jpg', label:'ES315 (15") — Horizontal direita (EV esquerda) (fundo branco)' },
-          { src:'es315_horizontal_right_evleft_bg.jpg', label:'ES315 (15") — Horizontal direita (EV esquerda) (com fundo)' },
-          { src:'es315_horizontal_right_evright_white.jpg', label:'ES315 (15") — Horizontal direita (EV direita) (fundo branco)' },
-          { src:'es315_horizontal_right_evright_bg.jpg', label:'ES315 (15") — Horizontal direita (EV direita) (com fundo)' },
-          { src:'es315_back_direct_white.jpg', label:'ES315 (15") — Vista traseira direta (fundo branco)' },
-          { src:'es315_back_direct_bg.jpg', label:'ES315 (15") — Vista traseira direta (com fundo)' },
-          { src:'es315_back_left_white.jpg', label:'ES315 (15") — Perspetiva traseira esquerda (fundo branco)' },
-          { src:'es315_back_left_bg.jpg', label:'ES315 (15") — Perspetiva traseira esquerda (com fundo)' },
-          { src:'es315_back_right_white.jpg', label:'ES315 (15") — Perspetiva traseira direita (fundo branco)' },
-          { src:'es315_back_right_bg.jpg', label:'ES315 (15") — Perspetiva traseira direita (com fundo)' },
+          { src:'es315_front_direct_bg.png', label:'ES315 (15") — Vista frontal direta (com fundo)' },
+          { src:'es315_front_horizontal_evleft_bg.png', label:'ES315 (15") — Frontal horizontal (EV esquerda) (com fundo)' },
+          { src:'es315_front_horizontal_evright_bg.png', label:'ES315 (15") — Frontal horizontal (EV direita) (com fundo)' },
+          { src:'es315_front_left_angle_bg.png', label:'ES315 (15") — Perspetiva frontal esquerda (com fundo)' },
+          { src:'es315_front_right_angle_bg.png', label:'ES315 (15") — Perspetiva frontal direita (com fundo)' },
+          { src:'es315_horizontal_left_evleft_bg.png', label:'ES315 (15") — Horizontal esquerda (EV esquerda) (com fundo)' },
+          { src:'es315_horizontal_left_evright_bg.png', label:'ES315 (15") — Horizontal esquerda (EV direita) (com fundo)' },
+          { src:'es315_horizontal_right_evleft_bg.png', label:'ES315 (15") — Horizontal direita (EV esquerda) (com fundo)' },
+          { src:'es315_horizontal_right_evright_bg.png', label:'ES315 (15") — Horizontal direita (EV direita) (com fundo)' },
+          { src:'es315_back_direct_bg.png', label:'ES315 (15") — Vista traseira direta (com fundo)' },
+          { src:'es315_back_left_bg.png', label:'ES315 (15") — Perspetiva traseira esquerda (com fundo)' },
+          { src:'es315_back_right_bg.png', label:'ES315 (15") — Perspetiva traseira direita (com fundo)' },
           { src:'kbox_es315.png',      label:'ES315 — Vista frontal direita' },
           { src:'kbox_es315_back.png', label:'ES315 — Vista traseira esquerda' },
         ],
@@ -887,14 +874,6 @@ const CATEGORIES = {
     title:'Graphic Design', sub:'Illustrator · Photoshop',
     titleEn:'Graphic Design', subEn:'Illustrator · Photoshop',
     projects:[
-      { thumb:'design.jpg', name:'Identidade Visual', nameEn:'Visual Identity',
-        desc:'Desenvolvimento de identidade visual completa — logótipo, paleta de cores, tipografia e guia de marca.',
-        descEn:'Full visual identity development — logo, color palette, typography and brand guide.',
-        tags:['Illustrator','Branding'], year:'2024', client:'Cliente X',
-        artstation:'https://pedrofonseca9.artstation.com',
-        images:[{src:'design.jpg',label:'Logótipo principal'},{src:'design.jpg',label:'Aplicações da marca'}],
-        videos:[]
-      },
       { thumb:'forge_logo_final.png', name:'Forge', nameEn:'Forge',
         desc:'Projeto pessoal de design gráfico: logótipo Forge — "Build a Stronger You".',
         descEn:'Personal graphic design project: Forge logo — "Build a Stronger You".',
@@ -904,6 +883,19 @@ const CATEGORIES = {
           { src:'forge_versoes_cor.png',   label:'Versões de cor — primary, secondary, symbol, wordmark, monocromático' },
           { src:'forge_paleta_cores.png',  label:'Paleta de cores' },
           { src:'forge_mockup_tshirt.png', label:'Mockup — t-shirt com logótipo aplicado' }
+        ],
+        videos:[]
+      },
+      { thumb:'radiosilva_logo.png', name:'Identidade Rádio Silva', nameEn:'Rádio Silva Identity',
+        desc:'Identidade visual completa para a Rádio Silva, empresa de reparação de eletrodomésticos da minha família fundada em 1960 em Arcozelo, Gaia. O projeto traduz seis décadas de experiência e confiança numa imagem mais atual e próxima, mantendo viva a essência da marca — logótipo, paleta de cores, aplicações e materiais gráficos, desenvolvidos em Adobe Illustrator e Photoshop.',
+        descEn:'Complete visual identity for Rádio Silva, my family\'s home-appliance repair business, founded in 1960 in Arcozelo, Gaia. The project translates six decades of trust and experience into a more current, approachable image while keeping the brand\'s roots alive — logo, color palette, brand applications and graphic materials, developed in Adobe Illustrator and Photoshop.',
+        tags:['Illustrator','Photoshop','Branding'], client:'Rádio Silva (projeto pessoal)',
+        images:[
+          { src:'radiosilva_logo.png',              label:'Logótipo isolado' },
+          { src:'radiosilva_versoes_cor.jpg',        label:'Versões de cor — terracota, preto e branco' },
+          { src:'radiosilva_board_completo.jpg',     label:'Estudo de identidade completo' },
+          { src:'radiosilva_mockup_placa_cor.jpg',   label:'Mockup — placa de loja (versão a cores)' },
+          { src:'radiosilva_mockup_placa_mono.jpg',  label:'Mockup — placa de loja (versão monocromática)' }
         ],
         videos:[]
       },
@@ -922,21 +914,51 @@ const CATEGORIES = {
         images:[],
         videos:[]
       },
+      { thumb:'wanderer_resultado_final.jpg', name:'Animated Painting — Wanderer above the Sea of Fog', nameEn:'Animated Painting — Wanderer above the Sea of Fog',
+        desc:'Este trabalho é o primeiro de uma série de mini-animações de pinturas clássicas, às quais quero dar um estilo retro, com uma vibração dos anos 90. Para este projeto, usei o Photoshop para recortar a pintura "Wanderer above the Sea of Fog", de Caspar David Friedrich, em diferentes camadas, que depois reconstruí e animei no After Effects para lhe dar movimento e profundidade. Os sons foram descarregados do Freesound.com.',
+        descEn:'This is the first of an ongoing series of mini animated-painting projects, where I animate classic artworks and give them a retro, 90s-inspired feel. For this piece, I used Photoshop to cut Caspar David Friedrich\'s "Wanderer above the Sea of Fog" into separate layers, which I then rebuilt and animated in After Effects to add movement and depth. The sounds were downloaded from Freesound.com.',
+        tags:['After Effects','Photoshop'], year:'2022', client:'Pessoal',
+        youtube:'6C2zjTlgzWU',
+        images:[
+          { src:'wanderer_referencia_original.jpg',     label:'Referência — pintura original de Caspar David Friedrich' },
+          { src:'wanderer_recorte_rochas.png',           label:'Recorte — rochas (Photoshop)' },
+          { src:'wanderer_recorte_personagem.png',       label:'Recorte — personagem (Photoshop)' },
+          { src:'wanderer_ae_composicao_nevoeiro.jpg',   label:'After Effects — composição do nevoeiro' },
+          { src:'wanderer_ae_montagem_cena.jpg',         label:'After Effects — montagem da cena' },
+          { src:'wanderer_ae_look_retro.jpg',            label:'After Effects — look retro em pormenor' },
+          { src:'wanderer_resultado_final.jpg',          label:'Resultado final — estilo retro pixelizado' }
+        ],
+        videos:[]
+      },
     ]
   },
   game:{
     title:'Game Development', sub:'Unity · Game Design',
     titleEn:'Game Development', subEn:'Unity · Game Design',
     projects:[
-      { thumb:'smells_like_murder_cover.jpg', name:'Smells Like Murder', nameEn:'Smells Like Murder',
-        desc:'Jogo online de terror/suspense desenvolvido como projeto final do Curso de Multimédia na ESMAD (Escola Superior de Media Artes e Design, Instituto Politécnico do Porto). Trabalho em equipa (com Francisco Pinto) que incluiu desenvolvimento em Unity, modelação e arte 3D, e design de jogo, desde o conceito até uma demo jogável.',
-        descEn:'Online horror/suspense game developed as the final project of the Multimedia Course at ESMAD (Escola Superior de Media Artes e Design, Polytechnic Institute of Porto). A team project (with Francisco Pinto) covering Unity development, 3D modeling and art, and game design, from concept to a playable demo.',
-        tags:['Unity','Game Design','3D Art','C#'], year:'2022', client:'ESMAD — Projeto Final de Curso',
+      { thumb:'smells_like_murder_titlecard.jpg', name:'Smells Like Murder', nameEn:'Smells Like Murder',
+        desc:'Smells Like Murder é um jogo online de terror/suspense desenvolvido como projeto final do Curso de Multimédia na ESMAD (Escola Superior de Media Artes e Design, Instituto Politécnico do Porto). Cada partida junta 5 "Sobreviventes" e 1 "Assassino", personagens jogáveis com objetivos opostos: os Sobreviventes têm de encontrar pistas que provem a presença do Assassino e escapar, enquanto o Assassino tenta impedir o seu progresso. Trabalhei no level design, design de áudio, minijogos, movimento das personagens, animações e UI/UX, em equipa com Bruno Filipe (programação back-end) e Francisco Pinto (modelação 3D e animação).',
+        descEn:'Smells Like Murder is an online horror/thriller game developed as the final project of the Multimedia Course at ESMAD (Escola Superior de Media Artes e Design, Polytechnic Institute of Porto). Each match pairs 5 "Survivors" against 1 "Killer", both playable roles with opposing goals: Survivors must find clues proving the Killer\'s presence and escape, while the Killer tries to stop their progress. I worked on level design, audio design, minigames, character movement, animation and UI/UX, alongside Bruno Filipe (back-end programming) and Francisco Pinto (3D modeling and animation).',
+        tags:['Unity','Visual Studio','Photoshop','Illustrator'], year:'2022', client:'ESMAD — Projeto Final de Curso',
         link:'https://linktr.ee/smellslikemurder',
         linkLabel:'Ver todas as ligações do projeto →',
         linkLabelEn:'View all project links →',
-        images:[],
-        videos:[]
+        images:[
+          { src:'smells_like_murder_titlecard.jpg',      label:'Ecrã de título' },
+          { src:'smells_like_murder_unity_editor.jpg',   label:'Unity — ambiente de desenvolvimento' },
+          { src:'smells_like_murder_corredor.jpg',       label:'Corredor do hospital abandonado' },
+          { src:'smells_like_murder_sala.jpg',           label:'Sala com mesa e cadeiras' },
+          { src:'smells_like_murder_corredor_amplo.jpg', label:'Corredor amplo' },
+          { src:'smells_like_murder_casadebanho.jpg',    label:'Casa de banho / balneário' },
+          { src:'smells_like_murder_perseguicao.jpg',    label:'Captura de jogo — perseguição' },
+          { src:'smells_like_murder_equipa.jpg',         label:'Apresentação da equipa' }
+        ],
+        videos:[],
+        youtubeVideos:[
+          { id:'TYbv5KiCptM', label:'Trailer' },
+          { id:'OMe32-yAfuA', label:'Game Test' },
+          { id:'JRZJH951Mkw', label:'Game Features' }
+        ]
       },
     ]
   }
@@ -1096,7 +1118,7 @@ function openProject(proj) {
   viewDetail.classList.add('show');
   modalBody.scrollTop = 0;
   const hasImages = proj.images && proj.images.length > 0;
-  const hasVideos = proj.videos && proj.videos.length > 0;
+  const hasVideos = (proj.videos && proj.videos.length > 0) || (proj.youtubeVideos && proj.youtubeVideos.length > 0);
   const heroHtml = proj.youtube
     ? `<div class="proj-detail-hero proj-detail-hero-video"><iframe src="https://www.youtube.com/embed/${proj.youtube}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
     : proj.thumb
@@ -1131,7 +1153,7 @@ function openProject(proj) {
   }
   if (hasVideos) {
     html += `<div class="proj-section-title">${lang==='en'?'Videos':'Vídeos'}</div>
-    <div class="proj-videos-grid">${proj.videos.map(v=>`<div class="proj-video-wrap"><video controls preload="metadata"><source src="${v.src}"></video><div class="proj-video-label">${v.label}</div></div>`).join('')}</div>`;
+    <div class="proj-videos-grid">${(proj.videos||[]).map(v=>`<div class="proj-video-wrap"><video controls preload="metadata"><source src="${v.src}"></video><div class="proj-video-label">${v.label}</div></div>`).join('')}${(proj.youtubeVideos||[]).map(v=>`<div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/${v.id}" title="${v.label}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="proj-video-label">${v.label}</div></div>`).join('')}</div>`;
   }
   if (!hasImages && !hasVideos) {
     html += `<div class="empty-state"><div class="eicon">📁</div><p>${lang==='en'?'Files in preparation.':'Ficheiros em preparação.'}</p><div class="coming">${lang==='en'?'Coming soon':'Em breve'}</div></div>`;
