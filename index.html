@@ -937,6 +937,19 @@ const CATEGORIES = {
         ],
         videos:[]
       },
+      { thumb:'crowsrock_mockup_poster_rua.jpg', name:'Rock Festival — Conteúdo para Redes Sociais e Publicidade', nameEn:'Rock Festival — Social Media & Ads Content',
+        desc:'Exercício de treino em que criei a comunicação de um festival de rock fictício, o "Crow\'s Rock", pensada para redes sociais e anúncios. Comecei por definir uma linguagem visual forte: fotografias de concertos tratadas com um efeito de meio-tom (halftone) em duotone vermelho e lilás, que remete para os cartazes serigrafados, combinadas com tipografia bold e condensada e um símbolo de setas ">>" que reforça a ideia de energia e movimento. A partir daí desenvolvi várias peças da mesma campanha: um cartaz principal, um flyer com o cartaz de bandas e as datas, e as respetivas apresentações em mockup. Por fim, animei o conteúdo no After Effects, adaptando a identidade para formatos de redes sociais com transições e movimento de texto ao ritmo do tema. Os nomes das bandas, o site e os textos são fictícios, já que o objetivo era treinar o processo completo de uma campanha.',
+        descEn:'A training exercise where I created the communication for a fictional rock festival, "Crow\'s Rock", designed for social media and ads. I started by defining a strong visual language: concert photos treated with a red-and-lilac duotone halftone effect, reminiscent of screen-printed gig posters, paired with bold condensed typography and a ">>" arrow symbol that reinforces energy and movement. From there I developed several pieces of the same campaign: a main poster, a flyer with the band lineup and dates, and mockup presentations of each. Finally, I animated the content in After Effects, adapting the identity to social media formats with transitions and text motion timed to the music. Band names, website and copy are placeholders, since the goal was to practice the full process of building a campaign.',
+        tags:['After Effects','Photoshop','Social Media','Motion'], year:'2023', client:'Projeto pessoal (treino)',
+        vimeo:'790918605',
+        images:[
+          { src:'crowsrock_mockup_poster_rua.jpg', label:'Mockup — cartaz em contexto urbano' },
+          { src:'crowsrock_poster.jpg',            label:'Cartaz principal — Crow\'s Rock' },
+          { src:'crowsrock_flyer.jpg',             label:'Flyer — programa com datas e bandas' },
+          { src:'crowsrock_mockup_flyers.jpg',     label:'Mockup — flyers impressos' }
+        ],
+        videos:[]
+      },
     ]
   },
   multimedia:{
@@ -1173,6 +1186,8 @@ function showList() {
     const desc = lang === 'en' ? (proj.descEn || proj.desc) : proj.desc;
     const thumbHtml = proj.youtube
       ? `<div class="proj-list-thumb proj-list-thumb-video"><img src="https://img.youtube.com/vi/${proj.youtube}/hqdefault.jpg" alt="${name}"><div class="proj-list-play">▶</div></div>`
+      : (proj.vimeo && proj.thumb)
+      ? `<div class="proj-list-thumb proj-list-thumb-video"><img src="${proj.thumb}" alt="${name}"><div class="proj-list-play">▶</div></div>`
       : proj.thumb
       ? `<img class="proj-list-thumb" src="${proj.thumb}" alt="${name}">`
       : `<div class="proj-list-thumb proj-list-thumb-icon">🔪</div>`;
@@ -1203,6 +1218,8 @@ function openProject(proj) {
   const hasVideos = (proj.videos && proj.videos.length > 0) || (proj.youtubeVideos && proj.youtubeVideos.length > 0);
   const heroHtml = proj.youtube
     ? `<div class="proj-detail-hero proj-detail-hero-video"><iframe src="https://www.youtube.com/embed/${proj.youtube}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
+    : proj.vimeo
+    ? `<div class="proj-detail-hero proj-detail-hero-video"><iframe src="https://player.vimeo.com/video/${proj.vimeo}" title="${name}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
     : proj.thumb
     ? `<div class="proj-detail-hero"><img src="${proj.thumb}" alt="${name}"></div>`
     : `<div class="proj-detail-hero proj-detail-hero-icon">🔪</div>`;
