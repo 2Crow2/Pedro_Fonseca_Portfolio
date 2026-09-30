@@ -25,17 +25,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);ov
 /* HEADER */
 header{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(5,5,5,0.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.05);z-index:1000;opacity:0;transform:translateY(-20px);transition:opacity .8s,transform .8s,top .3s;}
 
-/* AVISO DE DESENVOLVIMENTO */
-.site-banner{position:fixed;top:0;left:0;right:0;z-index:1002;background:linear-gradient(90deg,#2a0000,#180505,#2a0000);border-bottom:1px solid rgba(214,0,0,0.35);display:flex;align-items:center;justify-content:center;gap:.9rem;padding:.65rem 3rem;text-align:center;flex-wrap:wrap;}
-.site-banner p{margin:0;font-size:.78rem;color:var(--light);letter-spacing:.01em;line-height:1.4;}
-.site-banner a{color:var(--red);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(214,0,0,0.4);white-space:nowrap;}
-.site-banner a:hover{color:#ff2a2a;border-color:#ff2a2a;}
-.site-banner-close{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--grey);font-size:1.1rem;line-height:1;cursor:pointer;padding:.2rem .5rem;transition:color .2s;}
-.site-banner-close:hover{color:var(--white);}
-@media(max-width:768px){
-  .site-banner{padding:.65rem 3.2rem .65rem 1rem;font-size:.72rem;}
-  .site-banner-close{right:.5rem;}
-}
 header.visible{opacity:1;transform:translateY(0);}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.05em;display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--white);}
 .logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite;}
@@ -354,13 +343,6 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- AVISO: SITE EM DESENVOLVIMENTO -->
-<div class="site-banner" id="siteBanner">
-  <p data-pt="🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no" data-en="🚧 This site is under development — my full portfolio is available on">🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no</p>
-  <a href="https://pedrofonseca9.artstation.com" target="_blank" rel="noopener" data-pt="ArtStation →" data-en="ArtStation →">ArtStation →</a>
-  <button class="site-banner-close" id="siteBannerClose" aria-label="Fechar aviso">×</button>
-</div>
-
 <header id="header">
   <a class="logo" href="#hero"><div class="logo-dot"></div>Pedro Fonseca</a>
   <nav>
@@ -552,28 +534,24 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
   </div>
   <div class="category-grid">
     <div class="category-card" data-cat="renders">
-      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🎨</div>
       <h4 data-pt="Rendering Projects" data-en="Rendering Projects">Rendering Projects</h4>
       <div class="cat-count" data-cat-count="renders"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="design">
-      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">✏️</div>
       <h4 data-pt="Graphic Design" data-en="Graphic Design">Graphic Design</h4>
       <div class="cat-count" data-cat-count="design"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="multimedia">
-      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🎬</div>
       <h4 data-pt="Multimedia" data-en="Multimedia">Multimedia</h4>
       <div class="cat-count" data-cat-count="multimedia"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="game">
-      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🕹️</div>
       <h4 data-pt="Game Development" data-en="Game Development">Game Development</h4>
       <div class="cat-count" data-cat-count="game"></div>
@@ -1087,23 +1065,6 @@ document.getElementById('langToggle').addEventListener('click', () => {
   updateCategoryCounts();
 });
 
-/* ===== BANNER "EM DESENVOLVIMENTO" ===== */
-const siteBanner = document.getElementById('siteBanner');
-const headerEl = document.getElementById('header');
-function positionHeaderBelowBanner() {
-  if (siteBanner && siteBanner.style.display !== 'none' && siteBanner.offsetHeight > 0) {
-    headerEl.style.top = siteBanner.offsetHeight + 'px';
-  } else {
-    headerEl.style.top = '0px';
-  }
-}
-positionHeaderBelowBanner();
-window.addEventListener('resize', positionHeaderBelowBanner);
-document.getElementById('siteBannerClose').addEventListener('click', () => {
-  siteBanner.style.display = 'none';
-  positionHeaderBelowBanner();
-});
-
 /* ===== CURSOR ===== */
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -1233,13 +1194,6 @@ function openProject(proj) {
         <div class="proj-detail-meta-item"><span class="proj-detail-meta-label">${lang==='en'?'Tools':'Ferramentas'}</span><span class="proj-detail-meta-val">${proj.tags.join(', ')}</span></div>
       </div>
     </div>
-    ${proj.artstation ? `
-    <div style="max-width:900px;margin:0 auto 1.5rem;">
-      <a class="btn-artstation" href="${proj.artstation}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.164-1.333H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/></svg>
-        ${lang==='en'?'View on ArtStation →':'Ver no ArtStation →'}
-      </a>
-    </div>` : ''}
     ${proj.link ? `
     <div style="max-width:900px;margin:0 auto 1.5rem;">
       <a class="btn-artstation" href="${proj.link}" target="_blank" rel="noopener">
@@ -1253,9 +1207,6 @@ function openProject(proj) {
   if (hasVideos) {
     html += `<div class="proj-section-title">${lang==='en'?'Videos':'Vídeos'}</div>
     <div class="proj-videos-grid">${(proj.videos||[]).map(v=>`<div class="proj-video-wrap"><video controls preload="metadata"><source src="${v.src}"></video><div class="proj-video-label">${v.label}</div></div>`).join('')}${(proj.youtubeVideos||[]).map(v=>`<div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/${v.id}" title="${v.label}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="proj-video-label">${v.label}</div></div>`).join('')}</div>`;
-  }
-  if (!hasImages && !hasVideos) {
-    html += `<div class="empty-state"><div class="eicon">📁</div><p>${lang==='en'?'Files in preparation.':'Ficheiros em preparação.'}</p><div class="coming">${lang==='en'?'Coming soon':'Em breve'}</div></div>`;
   }
   viewDetail.innerHTML = html;
   if (hasImages) {
