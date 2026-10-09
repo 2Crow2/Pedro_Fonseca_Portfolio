@@ -25,6 +25,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);ov
 /* HEADER */
 header{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(5,5,5,0.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.05);z-index:1000;opacity:0;transform:translateY(-20px);transition:opacity .8s,transform .8s,top .3s;}
 
+/* AVISO DE DESENVOLVIMENTO */
+.site-banner{position:fixed;top:0;left:0;right:0;z-index:1002;background:linear-gradient(90deg,#2a0000,#180505,#2a0000);border-bottom:1px solid rgba(214,0,0,0.35);display:flex;align-items:center;justify-content:center;gap:.9rem;padding:.65rem 3rem;text-align:center;flex-wrap:wrap;}
+.site-banner p{margin:0;font-size:.78rem;color:var(--light);letter-spacing:.01em;line-height:1.4;}
+.site-banner a{color:var(--red);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(214,0,0,0.4);white-space:nowrap;}
+.site-banner a:hover{color:#ff2a2a;border-color:#ff2a2a;}
+.site-banner-close{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--grey);font-size:1.1rem;line-height:1;cursor:pointer;padding:.2rem .5rem;transition:color .2s;}
+.site-banner-close:hover{color:var(--white);}
+@media(max-width:768px){
+  .site-banner{padding:.65rem 3.2rem .65rem 1rem;font-size:.72rem;}
+  .site-banner-close{right:.5rem;}
+}
 header.visible{opacity:1;transform:translateY(0);}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.05em;display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--white);}
 .logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite;}
@@ -343,6 +354,13 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- AVISO: SITE EM DESENVOLVIMENTO -->
+<div class="site-banner" id="siteBanner">
+  <p data-pt="🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no" data-en="🚧 This site is under development — my full portfolio is available on">🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no</p>
+  <a href="https://pedrofonseca9.artstation.com" target="_blank" rel="noopener" data-pt="ArtStation →" data-en="ArtStation →">ArtStation →</a>
+  <button class="site-banner-close" id="siteBannerClose" aria-label="Fechar aviso">×</button>
+</div>
+
 <header id="header">
   <a class="logo" href="#hero"><div class="logo-dot"></div>Pedro Fonseca</a>
   <nav>
@@ -534,24 +552,28 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
   </div>
   <div class="category-grid">
     <div class="category-card" data-cat="renders">
+      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🎨</div>
       <h4 data-pt="Rendering Projects" data-en="Rendering Projects">Rendering Projects</h4>
       <div class="cat-count" data-cat-count="renders"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="design">
+      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">✏️</div>
       <h4 data-pt="Graphic Design" data-en="Graphic Design">Graphic Design</h4>
       <div class="cat-count" data-cat-count="design"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="multimedia">
+      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🎬</div>
       <h4 data-pt="Multimedia" data-en="Multimedia">Multimedia</h4>
       <div class="cat-count" data-cat-count="multimedia"></div>
       <div class="cat-cta" data-pt="Ver projetos →" data-en="View projects →">Ver projetos →</div>
     </div>
     <div class="category-card" data-cat="game">
+      <div class="cat-add-hint" data-pt="+ adicionar" data-en="+ add">+ adicionar</div>
       <div class="cat-icon">🕹️</div>
       <h4 data-pt="Game Development" data-en="Game Development">Game Development</h4>
       <div class="cat-count" data-cat-count="game"></div>
@@ -915,19 +937,6 @@ const CATEGORIES = {
         ],
         videos:[]
       },
-      { thumb:'crowsrock_mockup_poster_rua.jpg', name:'Rock Festival — Conteúdo para Redes Sociais e Publicidade', nameEn:'Rock Festival — Social Media & Ads Content',
-        desc:'Exercício de treino em que criei a comunicação de um festival de rock fictício, o "Crow\'s Rock", pensada para redes sociais e anúncios. Comecei por definir uma linguagem visual forte: fotografias de concertos tratadas com um efeito de meio-tom (halftone) em duotone vermelho e lilás, que remete para os cartazes serigrafados, combinadas com tipografia bold e condensada e um símbolo de setas ">>" que reforça a ideia de energia e movimento. A partir daí desenvolvi várias peças da mesma campanha: um cartaz principal, um flyer com o cartaz de bandas e as datas, e as respetivas apresentações em mockup. Por fim, animei o conteúdo no After Effects, adaptando a identidade para formatos de redes sociais com transições e movimento de texto ao ritmo do tema. Os nomes das bandas, o site e os textos são fictícios, já que o objetivo era treinar o processo completo de uma campanha.',
-        descEn:'A training exercise where I created the communication for a fictional rock festival, "Crow\'s Rock", designed for social media and ads. I started by defining a strong visual language: concert photos treated with a red-and-lilac duotone halftone effect, reminiscent of screen-printed gig posters, paired with bold condensed typography and a ">>" arrow symbol that reinforces energy and movement. From there I developed several pieces of the same campaign: a main poster, a flyer with the band lineup and dates, and mockup presentations of each. Finally, I animated the content in After Effects, adapting the identity to social media formats with transitions and text motion timed to the music. Band names, website and copy are placeholders, since the goal was to practice the full process of building a campaign.',
-        tags:['After Effects','Photoshop','Social Media','Motion'], year:'2023', client:'Projeto pessoal (treino)',
-        vimeo:'790918605',
-        images:[
-          { src:'crowsrock_mockup_poster_rua.jpg', label:'Mockup — cartaz em contexto urbano' },
-          { src:'crowsrock_poster.jpg',            label:'Cartaz principal — Crow\'s Rock' },
-          { src:'crowsrock_flyer.jpg',             label:'Flyer — programa com datas e bandas' },
-          { src:'crowsrock_mockup_flyers.jpg',     label:'Mockup — flyers impressos' }
-        ],
-        videos:[]
-      },
     ]
   },
   multimedia:{
@@ -968,47 +977,39 @@ const CATEGORIES = {
           { src:'pillow_talk.mp4', label:'Pillow Talk — filme final' }
         ]
       },
-      { thumb:'coliseu_ar_poster.jpg', name:'Coliseu Porto Ageas — App Circo de Natal', nameEn:'Coliseu Porto Ageas — Christmas Circus App',
-        desc:'Desafio da licenciatura em Multimédia: criar uma aplicação para o Circo de Natal do Coliseu Porto Ageas, na edição especial de 80 anos (1941–2021). Desenvolvemos uma app de realidade aumentada em Unity com Vuforia: ao apontar o telemóvel para o cartaz, abrem-se portais 3D com ilustrações animadas dos números do espetáculo — como a bola aérea de Sonia Luftman ou o foguetão inspirado na banda sci-fi — identificados com o nome do artista e da atuação. No final, a app encaminha o utilizador para a compra de bilhetes e para as redes sociais do Coliseu. Todas as ilustrações foram criadas em Illustrator. Trabalho desenvolvido por mim (Pedro Fonseca) e pela Vanda Novo.',
-        descEn:'A Multimedia degree challenge: create an app for the Coliseu Porto Ageas Christmas Circus, in its special 80th-anniversary edition (1941–2021). We built an augmented reality app in Unity with Vuforia: pointing the phone at the poster opens 3D portals with animated illustrations of the show\'s acts — such as Sonia Luftman\'s aerial ball or the rocket inspired by the sci-fi band — each labeled with the artist and act name. At the end, the app takes the user to ticket sales and to the Coliseu\'s social media. All illustrations were created in Illustrator. Work developed by me (Pedro Fonseca) and Vanda Novo.',
-        tags:['Unity','Vuforia','Illustrator','AR'], year:'2021', client:'Projeto académico — Licenciatura em Multimédia',
-        youtube:'l0dB9UdRWPQ',
-        images:[
-          { src:'coliseu_ar_poster.jpg',     label:'Cartaz reconhecido pela app (target Vuforia)' },
-          { src:'coliseu_ar_bola_aerea.jpg', label:'Portal AR — Sonia Luftman, bola aérea' },
-          { src:'coliseu_ar_foguetao.jpg',   label:'Portal AR — cena do foguetão (banda sci-fi)' },
-          { src:'coliseu_ar_bilhetes.jpg',   label:'Ecrã final — compra de bilhetes e redes sociais' }
-        ],
-        videos:[]
-      },
-      { thumb:'vfx_car_greenscreen.jpg', name:'VFX — Car Drive', nameEn:'VFX — Car Drive',
-        desc:'Exercício de efeitos visuais em que juntei dois vídeos numa única cena. O primeiro foi filmado dentro de um carro parado, com as janelas tapadas por um ecrã verde; o segundo é uma gravação da rua captada lateralmente a partir de um carro em andamento. No After Effects, removi o ecrã verde com chroma key e coloquei a filmagem da rua por trás das janelas, fazendo com que o carro pareça realmente estar em movimento. O resultado final dependeu de integrar bem as duas imagens: acertar as cores e a luz entre o interior e o exterior, limpar as arestas do recorte e adicionar pequenos detalhes, como reflexos no vidro, para que a composição pareça ter sido filmada num só momento.',
-        descEn:'A visual effects exercise where I combined two separate videos into a single shot. The first was filmed inside a parked car with the windows covered by a green screen; the second is street footage captured sideways from a moving car. In After Effects, I keyed out the green screen and placed the street footage behind the windows, making the car look like it is actually driving. The final result came down to blending the two plates convincingly: matching color and light between the interior and exterior, cleaning up the key edges, and adding small details such as reflections on the glass, so the composite feels like it was filmed in one take.',
-        tags:['After Effects','VFX','Chroma Key','Compositing'], year:'2020', client:'Projeto pessoal',
-        youtube:'VV4IU_oKqPM',
-        images:[
-          { src:'vfx_car_greenscreen.jpg', label:'Plano original — interior do carro com ecrã verde' },
-          { src:'vfx_car_plate.jpg',       label:'Plano original — exterior filmado a partir do carro em movimento' }
-        ],
-        videos:[]
-      },
-      { thumb:'wondering_boat_render_final.png', name:'Wondering Boat', nameEn:'Wondering Boat',
-        desc:'Projeto de investigação em que explorei a ferramenta Ocean do Blender. Nunca tinha trabalhado com líquidos, porque o meu computador era demasiado lento para este tipo de simulação — com um pequeno upgrade, finalmente pude explorar este tipo de "águas". Aproveitei também para experimentar alguma pós-produção dentro do próprio Blender, mas os toques finais, como a vinheta, a correção de cor e os efeitos sonoros, foram feitos no After Effects.',
-        descEn:'An exploratory project where I dove into Blender\'s Ocean modifier. I had never worked with liquids before, since my computer was too slow for this kind of simulation — after a small upgrade, I could finally explore these "waters". I also experimented with some post-production inside Blender itself, while the finishing touches, such as the vignette, color correction and sound effects, were done in After Effects.',
-        tags:['Blender','After Effects','3D'], year:'2023', client:'Projeto pessoal',
-        youtube:'GcdDmg52hbM',
-        images:[
-          { src:'wondering_boat_render_final.png',    label:'Render final' },
-          { src:'wondering_boat_blender_shading.png', label:'Blender — workspace de Shading e material do oceano' }
-        ],
-        videos:[]
-      },
     ]
   },
   game:{
     title:'Game Development', sub:'Unity · Game Design',
     titleEn:'Game Development', subEn:'Unity · Game Design',
     projects:[
+      { thumb:'sprite_rotacao_sueste.png', name:'2D Pixel Art Assets', nameEn:'2D Pixel Art Assets',
+        desc:'Projeto pessoal em desenvolvimento neste momento, para um jogo indie. Estou a criar personagens jogáveis em pixel art retro, no estilo clássico dos beat \'em up de arcade dos anos 90, cada uma com um turnaround completo em 8 direções.',
+        descEn:'Personal project currently in development, for an indie game. I\'m creating playable characters in retro pixel art, styled after classic 1990s arcade beat \'em ups, each with a full 8-direction turnaround.',
+        tags:['Pixel Art','Game Design','Indie Game'], client:'Projeto pessoal — em desenvolvimento',
+        images:[
+          { src:'sprite_turnaround_8_direcoes.png',        label:'Personagem 1 — Turnaround (8 direções)' },
+          { src:'sprite_rotacao_sul.png',                   label:'Personagem 1 — Rotação, Sul' },
+          { src:'sprite_rotacao_sueste.png',                label:'Personagem 1 — Rotação, Sueste' },
+          { src:'sprite_rotacao_este.png',                  label:'Personagem 1 — Rotação, Este' },
+          { src:'sprite_rotacao_nordeste.png',              label:'Personagem 1 — Rotação, Nordeste' },
+          { src:'sprite_rotacao_norte.png',                 label:'Personagem 1 — Rotação, Norte' },
+          { src:'sprite_rotacao_noroeste.png',              label:'Personagem 1 — Rotação, Noroeste' },
+          { src:'sprite_rotacao_oeste.png',                 label:'Personagem 1 — Rotação, Oeste' },
+          { src:'sprite_rotacao_sudoeste.png',              label:'Personagem 1 — Rotação, Sudoeste' },
+          { src:'sprite_animacao_andar_spritesheet.png',    label:'Personagem 1 — Animação de andar (spritesheet, 8 frames)' },
+          { src:'sprite2_turnaround_8_direcoes.png',        label:'Personagem 2 — Turnaround (8 direções)' },
+          { src:'sprite2_rotacao_sul.png',                  label:'Personagem 2 — Rotação, Sul' },
+          { src:'sprite2_rotacao_sueste.png',                label:'Personagem 2 — Rotação, Sueste' },
+          { src:'sprite2_rotacao_este.png',                  label:'Personagem 2 — Rotação, Este' },
+          { src:'sprite2_rotacao_nordeste.png',              label:'Personagem 2 — Rotação, Nordeste' },
+          { src:'sprite2_rotacao_norte.png',                 label:'Personagem 2 — Rotação, Norte' },
+          { src:'sprite2_rotacao_noroeste.png',              label:'Personagem 2 — Rotação, Noroeste' },
+          { src:'sprite2_rotacao_oeste.png',                 label:'Personagem 2 — Rotação, Oeste' },
+          { src:'sprite2_rotacao_sudoeste.png',              label:'Personagem 2 — Rotação, Sudoeste' }
+        ],
+        videos:[]
+      },
       { thumb:'smells_like_murder_titlecard.jpg', name:'Smells Like Murder', nameEn:'Smells Like Murder',
         desc:'Smells Like Murder é um jogo online de terror/suspense desenvolvido como projeto final do Curso de Multimédia na ESMAD (Escola Superior de Media Artes e Design, Instituto Politécnico do Porto). Cada partida junta 5 "Sobreviventes" e 1 "Assassino", personagens jogáveis com objetivos opostos: os Sobreviventes têm de encontrar pistas que provem a presença do Assassino e escapar, enquanto o Assassino tenta impedir o seu progresso. Trabalhei no level design, design de áudio, minijogos, movimento das personagens, animações e UI/UX, em equipa com Bruno Filipe (programação back-end) e Francisco Pinto (modelação 3D e animação).',
         descEn:'Smells Like Murder is an online horror/thriller game developed as the final project of the Multimedia Course at ESMAD (Escola Superior de Media Artes e Design, Polytechnic Institute of Porto). Each match pairs 5 "Survivors" against 1 "Killer", both playable roles with opposing goals: Survivors must find clues proving the Killer\'s presence and escape, while the Killer tries to stop their progress. I worked on level design, audio design, minigames, character movement, animation and UI/UX, alongside Bruno Filipe (back-end programming) and Francisco Pinto (3D modeling and animation).',
@@ -1063,6 +1064,23 @@ document.getElementById('langToggle').addEventListener('click', () => {
     el.textContent = el.dataset[lang] || el.textContent;
   });
   updateCategoryCounts();
+});
+
+/* ===== BANNER "EM DESENVOLVIMENTO" ===== */
+const siteBanner = document.getElementById('siteBanner');
+const headerEl = document.getElementById('header');
+function positionHeaderBelowBanner() {
+  if (siteBanner && siteBanner.style.display !== 'none' && siteBanner.offsetHeight > 0) {
+    headerEl.style.top = siteBanner.offsetHeight + 'px';
+  } else {
+    headerEl.style.top = '0px';
+  }
+}
+positionHeaderBelowBanner();
+window.addEventListener('resize', positionHeaderBelowBanner);
+document.getElementById('siteBannerClose').addEventListener('click', () => {
+  siteBanner.style.display = 'none';
+  positionHeaderBelowBanner();
 });
 
 /* ===== CURSOR ===== */
@@ -1147,8 +1165,6 @@ function showList() {
     const desc = lang === 'en' ? (proj.descEn || proj.desc) : proj.desc;
     const thumbHtml = proj.youtube
       ? `<div class="proj-list-thumb proj-list-thumb-video"><img src="https://img.youtube.com/vi/${proj.youtube}/hqdefault.jpg" alt="${name}"><div class="proj-list-play">▶</div></div>`
-      : (proj.vimeo && proj.thumb)
-      ? `<div class="proj-list-thumb proj-list-thumb-video"><img src="${proj.thumb}" alt="${name}"><div class="proj-list-play">▶</div></div>`
       : proj.thumb
       ? `<img class="proj-list-thumb" src="${proj.thumb}" alt="${name}">`
       : `<div class="proj-list-thumb proj-list-thumb-icon">🔪</div>`;
@@ -1179,8 +1195,6 @@ function openProject(proj) {
   const hasVideos = (proj.videos && proj.videos.length > 0) || (proj.youtubeVideos && proj.youtubeVideos.length > 0);
   const heroHtml = proj.youtube
     ? `<div class="proj-detail-hero proj-detail-hero-video"><iframe src="https://www.youtube.com/embed/${proj.youtube}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
-    : proj.vimeo
-    ? `<div class="proj-detail-hero proj-detail-hero-video"><iframe src="https://player.vimeo.com/video/${proj.vimeo}" title="${name}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
     : proj.thumb
     ? `<div class="proj-detail-hero"><img src="${proj.thumb}" alt="${name}"></div>`
     : `<div class="proj-detail-hero proj-detail-hero-icon">🔪</div>`;
@@ -1194,6 +1208,13 @@ function openProject(proj) {
         <div class="proj-detail-meta-item"><span class="proj-detail-meta-label">${lang==='en'?'Tools':'Ferramentas'}</span><span class="proj-detail-meta-val">${proj.tags.join(', ')}</span></div>
       </div>
     </div>
+    ${proj.artstation ? `
+    <div style="max-width:900px;margin:0 auto 1.5rem;">
+      <a class="btn-artstation" href="${proj.artstation}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.164-1.333H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/></svg>
+        ${lang==='en'?'View on ArtStation →':'Ver no ArtStation →'}
+      </a>
+    </div>` : ''}
     ${proj.link ? `
     <div style="max-width:900px;margin:0 auto 1.5rem;">
       <a class="btn-artstation" href="${proj.link}" target="_blank" rel="noopener">
@@ -1207,6 +1228,9 @@ function openProject(proj) {
   if (hasVideos) {
     html += `<div class="proj-section-title">${lang==='en'?'Videos':'Vídeos'}</div>
     <div class="proj-videos-grid">${(proj.videos||[]).map(v=>`<div class="proj-video-wrap"><video controls preload="metadata"><source src="${v.src}"></video><div class="proj-video-label">${v.label}</div></div>`).join('')}${(proj.youtubeVideos||[]).map(v=>`<div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/${v.id}" title="${v.label}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="proj-video-label">${v.label}</div></div>`).join('')}</div>`;
+  }
+  if (!hasImages && !hasVideos) {
+    html += `<div class="empty-state"><div class="eicon">📁</div><p>${lang==='en'?'Files in preparation.':'Ficheiros em preparação.'}</p><div class="coming">${lang==='en'?'Coming soon':'Em breve'}</div></div>`;
   }
   viewDetail.innerHTML = html;
   if (hasImages) {
