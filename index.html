@@ -354,12 +354,6 @@ footer{text-align:center;padding:2.5rem;background:var(--bg2);border-top:1px sol
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- AVISO: SITE EM DESENVOLVIMENTO -->
-<div class="site-banner" id="siteBanner">
-  <p data-pt="🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no" data-en="🚧 This site is under development — my full portfolio is available on">🚧 Este site está em desenvolvimento — o meu portfólio completo está disponível no</p>
-  <a href="https://pedrofonseca9.artstation.com" target="_blank" rel="noopener" data-pt="ArtStation →" data-en="ArtStation →">ArtStation →</a>
-  <button class="site-banner-close" id="siteBannerClose" aria-label="Fechar aviso">×</button>
-</div>
 
 <header id="header">
   <a class="logo" href="#hero"><div class="logo-dot"></div>Pedro Fonseca</a>
@@ -1066,22 +1060,8 @@ document.getElementById('langToggle').addEventListener('click', () => {
   updateCategoryCounts();
 });
 
-/* ===== BANNER "EM DESENVOLVIMENTO" ===== */
-const siteBanner = document.getElementById('siteBanner');
 const headerEl = document.getElementById('header');
-function positionHeaderBelowBanner() {
-  if (siteBanner && siteBanner.style.display !== 'none' && siteBanner.offsetHeight > 0) {
-    headerEl.style.top = siteBanner.offsetHeight + 'px';
-  } else {
-    headerEl.style.top = '0px';
-  }
-}
-positionHeaderBelowBanner();
-window.addEventListener('resize', positionHeaderBelowBanner);
-document.getElementById('siteBannerClose').addEventListener('click', () => {
-  siteBanner.style.display = 'none';
-  positionHeaderBelowBanner();
-});
+headerEl.style.top = '0px';
 
 /* ===== CURSOR ===== */
 const cursor = document.getElementById('cursor');
